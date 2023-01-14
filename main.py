@@ -3,21 +3,24 @@ import time
 import sys
 import clr
 
-#clr.AddReference("C:\\Program Files\\Thorlabs\\Kinesis\\Thorlabs.MotionControl.DeviceManagerCLI.dll")
-#clr.AddReference("C:\\Program Files\\Thorlabs\\Kinesis\\Thorlabs.MotionControl.GenericMotorCLI.dll")
-#clr.AddReference("C:\\Program Files\\Thorlabs\\Kinesis\\ThorLabs.MotionControl.TCube.SolenoidCLI.dll")
+clr.AddReference("C:\\Program Files\\Thorlabs\\Kinesis\\Thorlabs.MotionControl.DeviceManagerCLI.dll")
+clr.AddReference("C:\\Program Files\\Thorlabs\\Kinesis\\Thorlabs.MotionControl.GenericMotorCLI.dll")
+clr.AddReference("C:\\Program Files\\Thorlabs\\Kinesis\\ThorLabs.MotionControl.TCube.SolenoidCLI.dll")
+
+#load("C:\\Program Files\\Thorlabs\\Kinesis\\Thorlabs.MotionControl.DeviceManagerCLI.dll")
+#load("C:\\Program Files\\Thorlabs\\Kinesis\\Thorlabs.MotionControl.GenericMotorCLI.dll")
+#load("C:\\Program Files\\Thorlabs\\Kinesis\\ThorLabs.MotionControl.TCube.SolenoidCLI.dll")
 
 from Thorlabs.MotionControl.DeviceManagerCLI import *
 from Thorlabs.MotionControl.GenericMotorCLI import *
 from Thorlabs.MotionControl.TCube.SolenoidCLI import *
 from System import Decimal  # necessary for real world units
 
-
 def main():
     """The main entry point for the application"""
 
     # Uncomment this line if you are using
-    SimulationManager.Instance.InitializeSimulations()
+    #SimulationManager.Instance.InitializeSimulations()
 
     try:
 
@@ -25,8 +28,8 @@ def main():
 
         # create new device
         serial_no = "85819035"  # Replace this line with your device's serial number
-        # Connect, begin polling, and enable
         device = TCubeSolenoid.CreateTCubeSolenoid(serial_no)
+        # Connect, begin polling, and enable
         device.Connect(serial_no)
 
 
@@ -61,7 +64,7 @@ def main():
         print(e)
 
     # Uncomment this line if you are using Simulations
-    SimulationManager.Instance.UninitializeSimulations()
+    #SimulationManager.Instance.UninitializeSimulations()
 
 
 
