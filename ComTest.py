@@ -35,9 +35,20 @@ def main():
     com.flushInput()
     com.flushOutput()
     time.sleep(1)
+    # 0 0 0 0 0 0 0 1 = 0x01
+    # 0b100001 = 0x21
+    com.write(bytearray([0x10, 0x02, 0x01, 0x02, 0x21, 0x01]))   # 0x02 for disable
+    com.flushInput()
+    com.flushOutput()
+    time.sleep(1)
 
     com.close()
     print(com.is_open)
+
+    # Rx81, 04, 0E, 00, 81, 50, 01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 20, 00, 00
+
+    # Rx81, 04, 0E, 00, 81, 50, 01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 20, 00, 80
+    # Rx81, 04, 0E, 00, 81, 50, 01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 20, 00, 80
 
 
 main()
